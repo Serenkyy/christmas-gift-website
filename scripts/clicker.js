@@ -9,16 +9,16 @@ const MILESTONE_FACES = {
 };
 
 const MILESTONE_HATS = [
-    { kisses: 10, image: 'hat-10.png', name: '圣诞帽' },
-    { kisses: 25, image: 'hat-25.png', name: '皇冠' },
-    { kisses: 50, image: 'hat-50.png', name: '派对帽' },
-    { kisses: 100, image: 'hat-100.png', name: '魔法帽' },
-    { kisses: 250, image: 'hat-250.png', name: '海盗帽' },
-    { kisses: 500, image: 'hat-500.png', name: '厨师帽' },
-    { kisses: 1000, image: 'hat-1000.png', name: '国王冠' }
+    { kisses: 10, image: 'hat-10.png', name: 'Santa Hat' },
+    { kisses: 25, image: 'hat-25.png', name: 'Crown' },
+    { kisses: 50, image: 'hat-50.png', name: 'Party Hat' },
+    { kisses: 100, image: 'hat-100.png', name: 'Wizard Hat' },
+    { kisses: 250, image: 'hat-250.png', name: 'Pirate Hat' },
+    { kisses: 500, image: 'hat-500.png', name: 'Chef Hat' },
+    { kisses: 1000, image: 'hat-1000.png', name: 'King Crown' }
 ];
 
-const BOSS_HAT = { image: 'hat-boss.png', name: '英雄帽' };
+const BOSS_HAT = { image: 'hat-boss.png', name: 'Hero Hat' };
 
 const UPGRADES = [
     { power: 2, cost: 50 },
@@ -69,7 +69,7 @@ function loadGameState() {
 }
 
 function resetGame() {
-    if (confirm('你确定要重置游戏吗？所有进度将丢失！')) {
+    if (confirm('Are you sure you want to reset the game? All progress will be lost!')) {
         gameState = {
             totalKisses: 0,
             clickPower: 1,
@@ -265,7 +265,7 @@ function showUnlockedNotification(itemName) {
     notification.style.zIndex = '10000';
     notification.style.boxShadow = '0 10px 40px rgba(0, 0, 0, 0.3)';
     notification.style.animation = 'fadeInUp 0.5s ease';
-    notification.textContent = `解锁: ${itemName}! 🎉`;
+    notification.textContent = `Unlocked: ${itemName}! 🎉`;
 
     document.body.appendChild(notification);
 
@@ -448,7 +448,7 @@ function defeatBoss() {
     applyHat(BOSS_HAT.image);
 
     // Show victory message
-    showUnlockedNotification(BOSS_HAT.name + ' - 你拯救了Oppa!');
+    showUnlockedNotification(BOSS_HAT.name + ' - You saved Oppa!');
 
     updateUnlockedGrid();
     saveGameState();

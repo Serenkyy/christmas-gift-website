@@ -39,6 +39,9 @@
 html {
     scroll-behavior: smooth;
     scroll-snap-type: y mandatory;
+    height: 100%;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
 }
 
 body {
@@ -49,6 +52,8 @@ body {
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
 }
 
 /* ===========================
@@ -148,12 +153,15 @@ body {
 
 .panel {
     min-height: 100vh;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: var(--panel-padding);
     scroll-snap-align: start;
+    scroll-snap-stop: always;
     position: relative;
+    overflow-y: auto;
 }
 
 .panel-content {

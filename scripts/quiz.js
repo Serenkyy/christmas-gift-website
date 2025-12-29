@@ -9,24 +9,24 @@ let correctAnswersCount = 0;
 // Result messages based on score
 const RESULT_MESSAGES = {
     0: {
-        title: '哎呀! 😅',
-        description: '看来你需要更多了解Oppa呢！没关系，我们有很多时间一起学习~'
+        title: 'Oops! 😅',
+        description: 'Looks like you need to get to know me better! No worries, we have plenty of time to learn together~'
     },
     low: { // 1-5
-        title: '还不错! 💪',
-        description: '你对我有一些了解，但还有很多可以探索的地方哦！'
+        title: 'Not Bad! 💪',
+        description: 'You know some things about me, but there\'s still a lot to discover!'
     },
     medium: { // 6-7
-        title: '做得好! 🌟',
-        description: '你对我很了解！我们的默契越来越好了~'
+        title: 'Well Done! 🌟',
+        description: 'You know me quite well! Our connection is getting stronger~'
     },
     high: { // 8-9
-        title: '太棒了! 🎉',
-        description: '你几乎是我的专家了！只差一点点就完美了~'
+        title: 'Amazing! 🎉',
+        description: 'You\'re almost an expert on me! Just a tiny bit away from perfection~'
     },
     perfect: { // 10
-        title: '完美! 💝',
-        description: '你完全了解我！我们真的是天生一对! ❤️'
+        title: 'Perfect! 💝',
+        description: 'You know me completely! We\'re truly meant to be together! ❤️'
     }
 };
 
@@ -78,10 +78,16 @@ function initQuizButtons() {
     const startBtn = document.getElementById('start-quiz-btn');
     const submitBtn = document.getElementById('submit-answer-btn');
     const restartBtn = document.getElementById('restart-quiz-btn');
+    const restartBtnSmall = document.getElementById('restart-quiz-btn-small');
 
     startBtn.addEventListener('click', startQuiz);
     submitBtn.addEventListener('click', submitAnswer);
     restartBtn.addEventListener('click', resetQuiz);
+    restartBtnSmall.addEventListener('click', () => {
+        if (confirm('Are you sure you want to restart the quiz? Your progress will be lost.')) {
+            resetQuiz();
+        }
+    });
 }
 
 // ===========================
@@ -143,7 +149,7 @@ function showQuestion() {
     // Reset submit button
     const submitBtn = document.getElementById('submit-answer-btn');
     submitBtn.disabled = false;
-    submitBtn.textContent = '提交答案';
+    submitBtn.textContent = 'Submit Answer';
 }
 
 function selectAnswer(optionElement, index, multipleChoice) {
@@ -168,7 +174,7 @@ function selectAnswer(optionElement, index, multipleChoice) {
 
 function submitAnswer() {
     if (selectedAnswers.length === 0) {
-        alert('请选择至少一个答案！');
+        alert('Please select at least one answer!');
         return;
     }
 
@@ -208,7 +214,7 @@ function showAnswerFeedback(correctAnswers, isCorrect) {
 
     // Update submit button text
     const submitBtn = document.getElementById('submit-answer-btn');
-    submitBtn.textContent = isCorrect ? '✅ 正确!' : '❌ 错误';
+    submitBtn.textContent = isCorrect ? '✅ Correct!' : '❌ Wrong';
 }
 
 function showResults() {
