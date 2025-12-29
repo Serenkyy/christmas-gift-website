@@ -267,7 +267,6 @@ function updateUnlockedGrid() {
         const item = document.createElement('div');
         item.classList.add('unlocked-item');
         item.textContent = face.kisses;
-        item.title = face.name;
         grid.appendChild(item);
     });
 }
@@ -319,10 +318,8 @@ function startBossBattle() {
     gameState.bossActive = true;
 
     const bossContainer = document.getElementById('boss-battle');
-    const faceImage = document.getElementById('face-image');
 
     bossContainer.classList.remove('hidden');
-    faceImage.src = 'images/faces/face-boss.png';
 
     // Create mosquitos
     spawnMosquitos();
