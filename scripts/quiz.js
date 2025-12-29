@@ -26,7 +26,7 @@ const RESULT_MESSAGES = {
     },
     perfect: { // 10
         title: 'Perfect! 💝',
-        description: 'You know me completely! We\'re truly meant to be together! ❤️'
+        description: 'You know me completely! ❤️'
     }
 };
 
@@ -81,7 +81,7 @@ async function loadQuizData() {
                 question: "Do you love Oppa?",
                 answers: ["Yes", "Definitely", "Absolutely", "NO"],
                 correct: [0, 1, 2],
-                multipleChoice: true
+                multipleChoice: false
             }
         ];
         console.log('Using fallback quiz data:', quizData.length, 'questions');
