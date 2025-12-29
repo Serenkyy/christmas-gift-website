@@ -44,30 +44,47 @@ document.addEventListener('DOMContentLoaded', () => {
 async function loadQuizData() {
     try {
         const response = await fetch('data/quiz.json');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
         quizData = await response.json();
+        console.log('Quiz data loaded successfully:', quizData.length, 'questions');
     } catch (error) {
         console.error('Error loading quiz data:', error);
         // Fallback sample quiz
         quizData = [
             {
-                question: '我最喜欢的颜色是什么？',
-                answers: ['红色', '蓝色', '绿色', '黄色'],
+                question: "What is Oppa real name?",
+                answers: ["Sergey", "Oppa", "孔子", "Baby"],
                 correct: [0],
                 multipleChoice: false
             },
             {
-                question: '我的生日是哪一天？',
-                answers: ['1月1日', '2月14日', '3月15日', '12月25日'],
-                correct: [2],
+                question: "When Oppa was born?",
+                answers: ["17.07.2000", "07.17.2000", "17.04.2003", "yesterday"],
+                correct: [0, 1],
                 multipleChoice: false
             },
             {
-                question: '我最喜欢吃什么？（可多选）',
-                answers: ['披萨', '寿司', '意大利面', '汉堡'],
-                correct: [0, 1],
+                question: "Pick Oppa favorite food from the list.",
+                answers: ["Pizza", "Pasta", "宝宝", "KFC"],
+                correct: [0, 1, 2, 3],
+                multipleChoice: true
+            },
+            {
+                question: "What type of Oppa does NOT exist?",
+                answers: ["Cute Oppa", "Horny Oppa", "Angry Oppa", "Bald Oppa"],
+                correct: [3],
+                multipleChoice: false
+            },
+            {
+                question: "Do you love Oppa?",
+                answers: ["Yes", "Definitely", "Absolutely", "NO"],
+                correct: [0, 1, 2],
                 multipleChoice: true
             }
         ];
+        console.log('Using fallback quiz data:', quizData.length, 'questions');
     }
 }
 
