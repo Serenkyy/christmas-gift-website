@@ -1,0 +1,4 @@
+Place effect images in this folder:
+
+Required files:
+- mosquito.png (200x200px, transparent PNG) - For boss battle

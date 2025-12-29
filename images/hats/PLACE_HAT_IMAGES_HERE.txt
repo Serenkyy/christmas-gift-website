@@ -1,0 +1,11 @@
+Place hat/item images in this folder:
+
+Required files (600x400px, transparent PNG):
+- hat-10.png (unlocked at 10 kisses)
+- hat-25.png (unlocked at 25 kisses)
+- hat-50.png (unlocked at 50 kisses)
+- hat-100.png (unlocked at 100 kisses)
+- hat-250.png (unlocked at 250 kisses)
+- hat-500.png (unlocked at 500 kisses)
+- hat-1000.png (unlocked at 1000 kisses)
+- hat-boss.png (unlocked after beating boss)

@@ -1,0 +1,62 @@
+[
+  {
+    "question": "Oppa最喜欢的颜色是什么？",
+    "answers": ["红色", "蓝色", "绿色", "黄色"],
+    "correct": [0],
+    "multipleChoice": false
+  },
+  {
+    "question": "Oppa的生日是哪一天？",
+    "answers": ["1月15日", "3月20日", "6月10日", "9月5日"],
+    "correct": [1],
+    "multipleChoice": false
+  },
+  {
+    "question": "Oppa最喜欢吃什么？（可多选）",
+    "answers": ["披萨", "寿司", "意大利面", "汉堡"],
+    "correct": [0, 1],
+    "multipleChoice": true
+  },
+  {
+    "question": "Oppa最喜欢的电影类型是什么？",
+    "answers": ["动作片", "爱情片", "科幻片", "喜剧片"],
+    "correct": [2],
+    "multipleChoice": false
+  },
+  {
+    "question": "Oppa最喜欢的运动是什么？",
+    "answers": ["足球", "篮球", "游泳", "跑步"],
+    "correct": [1],
+    "multipleChoice": false
+  },
+  {
+    "question": "Oppa最喜欢的音乐类型是什么？（可多选）",
+    "answers": ["流行", "摇滚", "古典", "嘻哈"],
+    "correct": [0, 3],
+    "multipleChoice": true
+  },
+  {
+    "question": "Oppa最害怕什么？",
+    "answers": ["蜘蛛", "黑暗", "高处", "蛇"],
+    "correct": [0],
+    "multipleChoice": false
+  },
+  {
+    "question": "Oppa最喜欢的季节是什么？",
+    "answers": ["春天", "夏天", "秋天", "冬天"],
+    "correct": [2],
+    "multipleChoice": false
+  },
+  {
+    "question": "Oppa最喜欢的饮料是什么？（可多选）",
+    "answers": ["咖啡", "茶", "果汁", "可乐"],
+    "correct": [0, 1],
+    "multipleChoice": true
+  },
+  {
+    "question": "Oppa最想去的地方是哪里？",
+    "answers": ["日本", "法国", "美国", "澳大利亚"],
+    "correct": [0],
+    "multipleChoice": false
+  }
+]

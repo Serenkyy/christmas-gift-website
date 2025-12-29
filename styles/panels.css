@@ -1,0 +1,703 @@
+/* ===========================
+   PANEL 1: Compliment Generator
+   =========================== */
+#panel-1 {
+    background: linear-gradient(135deg, var(--christmas-cream) 0%, var(--accent-peach) 100%);
+}
+
+.compliment-text {
+    font-size: clamp(2rem, 8vw, 5rem);
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.name-text {
+    color: var(--christmas-red);
+    animation: colorShift 3s ease-in-out infinite;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.you-are {
+    font-size: 0.5em;
+    color: var(--text-light);
+    font-weight: 400;
+}
+
+.adjective-text {
+    color: var(--christmas-green);
+    animation: colorShiftAlt 3s ease-in-out infinite;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes colorShift {
+    0%, 100% { color: var(--christmas-red); }
+    25% { color: var(--accent-pink); }
+    50% { color: var(--accent-purple); }
+    75% { color: var(--christmas-gold); }
+}
+
+@keyframes colorShiftAlt {
+    0%, 100% { color: var(--christmas-green); }
+    25% { color: var(--accent-blue); }
+    50% { color: var(--christmas-gold); }
+    75% { color: var(--accent-pink); }
+}
+
+.refresh-btn {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background: var(--christmas-gold);
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem auto 0;
+    box-shadow: 0 4px 15px rgba(244, 209, 155, 0.4);
+    transition: var(--transition-smooth);
+}
+
+.refresh-btn:hover {
+    background: var(--christmas-red);
+    color: white;
+    transform: rotate(180deg) scale(1.1);
+    box-shadow: 0 6px 20px rgba(232, 165, 165, 0.5);
+}
+
+.refresh-btn svg {
+    width: 2rem;
+    height: 2rem;
+}
+
+/* ===========================
+   PANEL 2: Relationship Counter
+   =========================== */
+#panel-2 {
+    background: linear-gradient(135deg, var(--accent-blue) 0%, var(--christmas-white) 100%);
+}
+
+.counter-title {
+    font-size: clamp(1.5rem, 5vw, 3rem);
+    color: var(--text-dark);
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+.days-counter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.days-number {
+    font-size: clamp(4rem, 15vw, 10rem);
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--christmas-red), var(--christmas-gold), var(--christmas-green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: pulse 2s ease-in-out infinite;
+    text-shadow: 0 0 30px rgba(232, 165, 165, 0.3);
+}
+
+.days-text {
+    font-size: clamp(2rem, 6vw, 4rem);
+    color: var(--text-light);
+    font-weight: 600;
+}
+
+.counter-subtitle {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    color: var(--text-light);
+    font-style: italic;
+    margin-top: 1rem;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* ===========================
+   PANEL 3: Kiss Clicker Game
+   =========================== */
+#panel-3 {
+    background: linear-gradient(135deg, var(--christmas-green) 0%, var(--christmas-cream) 100%);
+}
+
+.clicker-game {
+    position: relative;
+}
+
+.game-title {
+    font-size: clamp(2rem, 6vw, 4rem);
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.reset-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.75rem 1.5rem;
+    background: var(--christmas-red);
+    color: white;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(232, 165, 165, 0.3);
+}
+
+.reset-btn:hover {
+    background: #d98989;
+    box-shadow: 0 6px 15px rgba(232, 165, 165, 0.5);
+}
+
+.kiss-counter {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.counter-value {
+    font-weight: 700;
+    color: var(--christmas-red);
+    margin-left: 0.5rem;
+}
+
+.power-display {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    margin-bottom: 2rem;
+    color: var(--text-light);
+}
+
+.power-value {
+    font-weight: 700;
+    color: var(--christmas-gold);
+    margin: 0 0.25rem;
+}
+
+/* Face Container */
+.face-container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    margin: 2rem auto;
+    cursor: pointer;
+    user-select: none;
+}
+
+.face-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%; /* 1:1 Aspect Ratio */
+    transition: transform 0.3s ease;
+}
+
+.face-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.1s ease;
+}
+
+.face-wrapper.flip {
+    transform: scaleX(-1);
+}
+
+.hat-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 40%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.hat-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Kiss Effects */
+.kiss-effects {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 999;
+}
+
+.kiss-particle {
+    position: absolute;
+    font-size: 2rem;
+    animation: floatUp 1.5s ease-out forwards;
+    pointer-events: none;
+}
+
+.kiss-particle.golden {
+    font-size: 3rem;
+    filter: drop-shadow(0 0 10px gold);
+}
+
+@keyframes floatUp {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-150px) scale(1.5);
+    }
+}
+
+/* Upgrade Buttons */
+.upgrade-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.upgrade-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 1rem 1.5rem;
+    background: var(--christmas-white);
+    border: 2px solid var(--christmas-gold);
+    border-radius: var(--border-radius);
+    transition: var(--transition-smooth);
+}
+
+.upgrade-btn:hover:not(:disabled) {
+    background: var(--christmas-gold);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(244, 209, 155, 0.4);
+}
+
+.upgrade-btn.purchased {
+    background: var(--christmas-green);
+    border-color: var(--christmas-green);
+    opacity: 0.6;
+}
+
+.upgrade-power {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.upgrade-cost {
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+/* Unlocked Items */
+.unlocked-items {
+    margin-top: 2rem;
+}
+
+.unlocked-title {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+}
+
+.unlocked-grid {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.unlocked-item {
+    width: 3rem;
+    height: 3rem;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    border: 2px solid var(--christmas-gold);
+}
+
+/* Boss Battle */
+.boss-battle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: var(--border-radius);
+    z-index: 100;
+}
+
+.boss-message {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 700;
+    color: var(--christmas-red);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    animation: shake 0.5s infinite;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(-50%) rotate(0deg); }
+    25% { transform: translateX(-50%) rotate(-2deg); }
+    75% { transform: translateX(-50%) rotate(2deg); }
+}
+
+.boss-health-container {
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    right: 10%;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    overflow: hidden;
+    border: 3px solid var(--text-dark);
+}
+
+.boss-health-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--christmas-red), var(--christmas-gold));
+    transition: width 0.3s ease;
+    width: 100%;
+}
+
+.mosquito-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.mosquito {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    animation: mosquitoMove linear;
+}
+
+@keyframes mosquitoMove {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(var(--target-x), var(--target-y));
+    }
+}
+
+/* ===========================
+   PANEL 4: Quiz Game
+   =========================== */
+#panel-4 {
+    background: linear-gradient(135deg, var(--accent-purple) 0%, var(--christmas-white) 100%);
+}
+
+.quiz-title {
+    font-size: clamp(2rem, 6vw, 4rem);
+    color: var(--text-dark);
+    margin-bottom: 2rem;
+    font-weight: 700;
+}
+
+.quiz-start, .quiz-question, .quiz-results {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.quiz-description {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    color: var(--text-light);
+    margin-bottom: 2rem;
+}
+
+.quiz-start-btn, .quiz-restart-btn {
+    padding: 1rem 3rem;
+    font-size: 1.5rem;
+    background: var(--christmas-gold);
+    color: var(--text-dark);
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(244, 209, 155, 0.4);
+}
+
+.quiz-start-btn:hover, .quiz-restart-btn:hover {
+    background: var(--christmas-red);
+    color: white;
+    box-shadow: 0 6px 20px rgba(232, 165, 165, 0.5);
+}
+
+.question-progress {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+}
+
+.current-question {
+    font-weight: 700;
+    color: var(--christmas-red);
+    font-size: 1.5rem;
+}
+
+.question-image-container {
+    margin-bottom: 2rem;
+}
+
+.question-image {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.question-text {
+    font-size: clamp(1.2rem, 4vw, 2rem);
+    color: var(--text-dark);
+    margin-bottom: 2rem;
+    line-height: 1.5;
+}
+
+.answer-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.answer-option {
+    padding: 1.5rem;
+    background: var(--christmas-white);
+    border: 3px solid transparent;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    text-align: left;
+    font-size: 1.1rem;
+}
+
+.answer-option:hover {
+    background: var(--christmas-cream);
+    border-color: var(--christmas-gold);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.answer-option.selected {
+    background: var(--christmas-gold);
+    border-color: var(--christmas-red);
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+.answer-option.correct {
+    background: var(--christmas-green);
+    border-color: var(--christmas-green);
+}
+
+.answer-option.incorrect {
+    background: var(--christmas-red);
+    border-color: var(--christmas-red);
+    color: white;
+}
+
+.quiz-submit-btn {
+    padding: 1rem 2rem;
+    font-size: 1.3rem;
+    background: var(--christmas-red);
+    color: white;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(232, 165, 165, 0.4);
+}
+
+.quiz-submit-btn:hover:not(:disabled) {
+    background: #d98989;
+    box-shadow: 0 6px 20px rgba(232, 165, 165, 0.5);
+}
+
+.result-score {
+    font-size: clamp(4rem, 12vw, 8rem);
+    font-weight: 800;
+    margin-bottom: 2rem;
+    background: linear-gradient(135deg, var(--christmas-red), var(--christmas-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.result-message {
+    font-size: clamp(1.5rem, 5vw, 3rem);
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.result-description {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    color: var(--text-light);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+/* ===========================
+   PANEL 5: Christmas Question
+   =========================== */
+#panel-5 {
+    background: linear-gradient(135deg, var(--christmas-red) 0%, var(--christmas-cream) 100%);
+}
+
+.question-title {
+    font-size: clamp(2rem, 6vw, 4rem);
+    color: var(--text-dark);
+    margin-bottom: 3rem;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.answer-buttons {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.answer-btn {
+    padding: 1.5rem 3rem;
+    font-size: clamp(1.2rem, 4vw, 2rem);
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    min-width: 150px;
+}
+
+.yes-btn {
+    background: var(--christmas-green);
+    color: white;
+}
+
+.yes-btn:hover {
+    background: #8fc68f;
+    box-shadow: 0 6px 20px rgba(168, 213, 168, 0.5);
+}
+
+.no-btn {
+    background: var(--christmas-white);
+    color: var(--text-dark);
+    border: 3px solid var(--text-light);
+}
+
+.no-btn:hover {
+    background: var(--christmas-cream);
+    border-color: var(--christmas-red);
+}
+
+.sad-emoji {
+    font-size: clamp(4rem, 15vw, 8rem);
+    margin-bottom: 2rem;
+    animation: sadBounce 1s ease-in-out infinite;
+}
+
+@keyframes sadBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+.sad-message {
+    font-size: clamp(1.5rem, 5vw, 3rem);
+    color: var(--text-dark);
+    margin-bottom: 2rem;
+    font-weight: 700;
+}
+
+.happy-emoji {
+    font-size: clamp(3rem, 12vw, 6rem);
+    margin-bottom: 2rem;
+    animation: happySpin 2s ease-in-out infinite;
+}
+
+@keyframes happySpin {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(5deg) scale(1.1); }
+}
+
+.happy-message {
+    font-size: clamp(2rem, 6vw, 4rem);
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.happy-subtitle {
+    font-size: clamp(1.2rem, 4vw, 2rem);
+    color: var(--text-light);
+    font-style: italic;
+}
+
+/* ===========================
+   Mobile Optimizations
+   =========================== */
+@media (max-width: 768px) {
+    .reset-btn {
+        position: static;
+        margin-bottom: 1rem;
+    }
+
+    .face-container {
+        max-width: 300px;
+    }
+
+    .upgrade-buttons {
+        gap: 0.5rem;
+    }
+
+    .upgrade-btn {
+        padding: 0.75rem 1rem;
+    }
+
+    .answer-options {
+        grid-template-columns: 1fr;
+    }
+
+    .answer-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .answer-btn {
+        width: 100%;
+    }
+}

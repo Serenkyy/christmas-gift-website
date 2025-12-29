@@ -1,0 +1,15 @@
+Place your face images in this folder:
+
+Required files (1000x1000px, transparent PNG):
+- face-default.png (main neutral face)
+- face-69.png
+- face-228.png
+- face-666.png
+- face-1111.png
+- face-boss.png (optional)
+
+All images should:
+- Be 1000x1000px square
+- Have transparent background
+- Leave ~200px empty space at top for hats
+- Face should occupy ~70% of canvas

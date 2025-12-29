@@ -1,0 +1,4 @@
+Place quiz question images in this folder (optional):
+
+Add any images referenced in your quiz.json questions.
+Format: PNG or JPG, any reasonable size (will be auto-scaled)

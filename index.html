@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>盈盈的圣诞礼物 💝</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/panels.css">
+</head>
+<body>
+    <!-- Panel Navigation Tracker -->
+    <div class="panel-tracker">
+        <div class="tracker-dot active" data-panel="0">🎄</div>
+        <div class="tracker-dot" data-panel="1">🎅</div>
+        <div class="tracker-dot" data-panel="2">⭐</div>
+        <div class="tracker-dot" data-panel="3">❄️</div>
+        <div class="tracker-dot" data-panel="4">🎁</div>
+    </div>
+
+    <!-- Snowfall Background Effect -->
+    <div class="snowflakes" aria-hidden="true">
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+
+        <!-- Panel 1: Compliment Generator -->
+        <section class="panel" id="panel-1">
+            <div class="panel-content">
+                <h1 class="compliment-text">
+                    <span class="name-text">盈盈</span>
+                    <span class="you-are">you are</span>
+                    <span class="adjective-text">amazing</span>
+                </h1>
+                <button class="refresh-btn" id="refresh-compliment" aria-label="Get new compliment">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
+                    </svg>
+                </button>
+            </div>
+        </section>
+
+        <!-- Panel 2: Relationship Counter -->
+        <section class="panel" id="panel-2">
+            <div class="panel-content">
+                <h2 class="counter-title">我们认识了</h2>
+                <div class="days-counter">
+                    <span class="days-number" id="days-count">0</span>
+                    <span class="days-text">天</span>
+                </div>
+                <p class="counter-subtitle">And counting...</p>
+            </div>
+        </section>
+
+        <!-- Panel 3: Kiss Clicker Game -->
+        <section class="panel" id="panel-3">
+            <div class="panel-content clicker-game">
+                <h2 class="game-title">Kiss Oppa 💋</h2>
+
+                <!-- Reset Button -->
+                <button class="reset-btn" id="reset-game">重置</button>
+
+                <!-- Kiss Counter Display -->
+                <div class="kiss-counter">
+                    <span class="counter-label">总吻数:</span>
+                    <span class="counter-value" id="kiss-count">0</span>
+                </div>
+
+                <!-- Click Power Display -->
+                <div class="power-display">
+                    <span class="power-label">每次点击:</span>
+                    <span class="power-value" id="click-power">1</span>
+                    <span class="power-unit">💋</span>
+                </div>
+
+                <!-- Clickable Face Area -->
+                <div class="face-container" id="face-container">
+                    <div class="face-wrapper" id="face-wrapper">
+                        <img src="images/faces/face-default.png" alt="Oppa" class="face-image" id="face-image">
+                        <div class="hat-container" id="hat-container"></div>
+                    </div>
+                    <!-- Boss Battle Elements (hidden by default) -->
+                    <div class="boss-battle hidden" id="boss-battle">
+                        <div class="boss-message">拯救 Oppa!</div>
+                        <div class="boss-health-container">
+                            <div class="boss-health-bar" id="boss-health-bar"></div>
+                        </div>
+                        <div class="mosquito-container" id="mosquito-container"></div>
+                    </div>
+                </div>
+
+                <!-- Power Upgrade Buttons -->
+                <div class="upgrade-buttons">
+                    <button class="upgrade-btn" data-power="2" data-cost="50">
+                        <span class="upgrade-power">2x</span>
+                        <span class="upgrade-cost">50💋</span>
+                    </button>
+                    <button class="upgrade-btn" data-power="3" data-cost="150">
+                        <span class="upgrade-power">3x</span>
+                        <span class="upgrade-cost">150💋</span>
+                    </button>
+                    <button class="upgrade-btn" data-power="5" data-cost="400">
+                        <span class="upgrade-power">5x</span>
+                        <span class="upgrade-cost">400💋</span>
+                    </button>
+                    <button class="upgrade-btn" data-power="10" data-cost="1000">
+                        <span class="upgrade-power">10x</span>
+                        <span class="upgrade-cost">1000💋</span>
+                    </button>
+                </div>
+
+                <!-- Unlocked Items Display -->
+                <div class="unlocked-items">
+                    <p class="unlocked-title">已解锁物品:</p>
+                    <div class="unlocked-grid" id="unlocked-grid"></div>
+                </div>
+
+                <!-- Kiss Effect Particles -->
+                <div class="kiss-effects" id="kiss-effects"></div>
+            </div>
+        </section>
+
+        <!-- Panel 4: Quiz Game -->
+        <section class="panel" id="panel-4">
+            <div class="panel-content quiz-game">
+                <h2 class="quiz-title">你有多了解 Oppa?</h2>
+
+                <!-- Quiz Start Screen -->
+                <div class="quiz-start" id="quiz-start">
+                    <p class="quiz-description">10道问题测试你对我的了解！</p>
+                    <button class="quiz-start-btn" id="start-quiz-btn">开始测试</button>
+                </div>
+
+                <!-- Quiz Question Screen -->
+                <div class="quiz-question hidden" id="quiz-question">
+                    <div class="question-progress">
+                        <span class="current-question">1</span>/<span class="total-questions">10</span>
+                    </div>
+
+                    <div class="question-image-container">
+                        <img src="" alt="" class="question-image hidden" id="question-image">
+                    </div>
+
+                    <h3 class="question-text" id="question-text"></h3>
+
+                    <div class="answer-options" id="answer-options"></div>
+
+                    <button class="quiz-submit-btn" id="submit-answer-btn">提交答案</button>
+                </div>
+
+                <!-- Quiz Results Screen -->
+                <div class="quiz-results hidden" id="quiz-results">
+                    <div class="result-score">
+                        <span class="score-number" id="final-score">0</span>/10
+                    </div>
+                    <h3 class="result-message" id="result-message"></h3>
+                    <p class="result-description" id="result-description"></p>
+                    <button class="quiz-restart-btn" id="restart-quiz-btn">再试一次</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Panel 5: Christmas Question -->
+        <section class="panel" id="panel-5">
+            <div class="panel-content">
+                <!-- Initial Question -->
+                <div class="christmas-question" id="christmas-question">
+                    <h2 class="question-title">你想和我一起过圣诞节吗？</h2>
+                    <div class="answer-buttons">
+                        <button class="answer-btn yes-btn" id="yes-btn">是的! 💝</button>
+                        <button class="answer-btn no-btn" id="no-btn">不...</button>
+                    </div>
+                </div>
+
+                <!-- Sad Response (hidden by default) -->
+                <div class="sad-response hidden" id="sad-response">
+                    <div class="sad-emoji">😢</div>
+                    <h3 class="sad-message">你确定吗？</h3>
+                    <div class="answer-buttons">
+                        <button class="answer-btn yes-btn" id="yes-btn-2">是的! 💝</button>
+                        <button class="answer-btn no-btn" id="no-btn-2">不...</button>
+                    </div>
+                </div>
+
+                <!-- Happy Response (hidden by default) -->
+                <div class="happy-response hidden" id="happy-response">
+                    <div class="happy-emoji">🎄✨💝✨🎄</div>
+                    <h3 class="happy-message">太好了! 我也想和你一起过! 🎅</h3>
+                    <p class="happy-subtitle">圣诞快乐，盈盈! ❤️</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/clicker.js"></script>
+    <script src="scripts/quiz.js"></script>
+</body>
+</html>
