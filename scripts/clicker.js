@@ -239,6 +239,13 @@ function unlockFace(face) {
     changeFacePermanent(face.image);
     updateUnlockedGrid();
     saveGameState();
+
+    // Trigger special animations for milestones
+    if (face.kisses === 500) {
+        floatingHeartsEffect();
+    } else if (face.kisses === 1000) {
+        goldenCrownEffect();
+    }
 }
 
 function changeFacePermanent(faceImage) {
@@ -416,8 +423,177 @@ function defeatBoss() {
     gameState.unlockedFaces.push(bossFaceUnlock);
     changeFacePermanent(BOSS_FACE.image);
 
+    // Trigger victory effects
+    bossVictoryEffects();
+
     updateUnlockedGrid();
     saveGameState();
+}
+
+// ===========================
+// Special Animations
+// ===========================
+function floatingHeartsEffect() {
+    const heartsContainer = document.createElement('div');
+    heartsContainer.style.position = 'fixed';
+    heartsContainer.style.top = '0';
+    heartsContainer.style.left = '0';
+    heartsContainer.style.width = '100%';
+    heartsContainer.style.height = '100%';
+    heartsContainer.style.pointerEvents = 'none';
+    heartsContainer.style.zIndex = '9998';
+    document.body.appendChild(heartsContainer);
+
+    // Create 30 floating hearts
+    for (let i = 0; i < 30; i++) {
+        setTimeout(() => {
+            const heart = document.createElement('div');
+            heart.textContent = '💖';
+            heart.style.position = 'absolute';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.bottom = '-50px';
+            heart.style.fontSize = (20 + Math.random() * 30) + 'px';
+            heart.style.animation = `floatUpHeart ${3 + Math.random() * 2}s ease-out forwards`;
+            heart.style.opacity = '0.8';
+            heartsContainer.appendChild(heart);
+
+            setTimeout(() => heart.remove(), 5000);
+        }, i * 100);
+    }
+
+    setTimeout(() => heartsContainer.remove(), 6000);
+}
+
+function goldenCrownEffect() {
+    const crownContainer = document.createElement('div');
+    crownContainer.style.position = 'fixed';
+    crownContainer.style.top = '0';
+    crownContainer.style.left = '0';
+    crownContainer.style.width = '100%';
+    crownContainer.style.height = '100%';
+    crownContainer.style.pointerEvents = 'none';
+    crownContainer.style.zIndex = '9998';
+    crownContainer.style.display = 'flex';
+    crownContainer.style.alignItems = 'center';
+    crownContainer.style.justifyContent = 'center';
+    document.body.appendChild(crownContainer);
+
+    // Giant golden crown
+    const crown = document.createElement('div');
+    crown.textContent = '👑';
+    crown.style.fontSize = '200px';
+    crown.style.animation = 'crownAppear 2s ease-out forwards';
+    crown.style.filter = 'drop-shadow(0 0 30px gold)';
+    crownContainer.appendChild(crown);
+
+    // Golden sparkles
+    for (let i = 0; i < 50; i++) {
+        setTimeout(() => {
+            const sparkle = document.createElement('div');
+            sparkle.textContent = '✨';
+            sparkle.style.position = 'absolute';
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparkle.style.top = Math.random() * 100 + '%';
+            sparkle.style.fontSize = '30px';
+            sparkle.style.animation = 'sparkleEffect 1.5s ease-out forwards';
+            crownContainer.appendChild(sparkle);
+
+            setTimeout(() => sparkle.remove(), 1500);
+        }, i * 30);
+    }
+
+    setTimeout(() => crownContainer.remove(), 3000);
+}
+
+function bossVictoryEffects() {
+    // Screen flash
+    const flash = document.createElement('div');
+    flash.style.position = 'fixed';
+    flash.style.top = '0';
+    flash.style.left = '0';
+    flash.style.width = '100%';
+    flash.style.height = '100%';
+    flash.style.background = 'white';
+    flash.style.zIndex = '9999';
+    flash.style.animation = 'screenFlash 0.5s ease-out forwards';
+    flash.style.pointerEvents = 'none';
+    document.body.appendChild(flash);
+    setTimeout(() => flash.remove(), 500);
+
+    // Confetti explosion
+    setTimeout(() => {
+        const colors = ['#E8A5A5', '#A8D5A8', '#F4D19B', '#FFB6C1', '#B4D7E8', '#D5B8E8'];
+        for (let i = 0; i < 100; i++) {
+            setTimeout(() => {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'fixed';
+                confetti.style.left = '50%';
+                confetti.style.top = '50%';
+                confetti.style.width = '10px';
+                confetti.style.height = '10px';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                confetti.style.pointerEvents = 'none';
+                confetti.style.zIndex = '9998';
+
+                const angle = (Math.random() * 360) * (Math.PI / 180);
+                const velocity = 200 + Math.random() * 300;
+                const vx = Math.cos(angle) * velocity;
+                const vy = Math.sin(angle) * velocity;
+
+                confetti.style.setProperty('--vx', vx + 'px');
+                confetti.style.setProperty('--vy', vy + 'px');
+                confetti.style.animation = 'confettiExplosion 2s ease-out forwards';
+
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 2000);
+            }, i * 10);
+        }
+    }, 300);
+
+    // Stars burst
+    setTimeout(() => {
+        for (let i = 0; i < 20; i++) {
+            setTimeout(() => {
+                const star = document.createElement('div');
+                star.textContent = '⭐';
+                star.style.position = 'fixed';
+                star.style.left = '50%';
+                star.style.top = '50%';
+                star.style.fontSize = '40px';
+                star.style.pointerEvents = 'none';
+                star.style.zIndex = '9998';
+
+                const angle = (i / 20) * 360 * (Math.PI / 180);
+                const distance = 300;
+                star.style.setProperty('--star-x', Math.cos(angle) * distance + 'px');
+                star.style.setProperty('--star-y', Math.sin(angle) * distance + 'px');
+                star.style.animation = 'starBurst 1.5s ease-out forwards';
+
+                document.body.appendChild(star);
+                setTimeout(() => star.remove(), 1500);
+            }, i * 50);
+        }
+    }, 600);
+
+    // Victory text
+    setTimeout(() => {
+        const victoryText = document.createElement('div');
+        victoryText.textContent = 'VICTORY! 🎉';
+        victoryText.style.position = 'fixed';
+        victoryText.style.top = '20%';
+        victoryText.style.left = '50%';
+        victoryText.style.transform = 'translateX(-50%)';
+        victoryText.style.fontSize = 'clamp(3rem, 10vw, 6rem)';
+        victoryText.style.fontWeight = 'bold';
+        victoryText.style.color = '#F4D19B';
+        victoryText.style.textShadow = '0 0 20px rgba(244, 209, 155, 0.8), 0 0 40px rgba(232, 165, 165, 0.6)';
+        victoryText.style.zIndex = '9999';
+        victoryText.style.pointerEvents = 'none';
+        victoryText.style.animation = 'victoryTextAppear 2s ease-out forwards';
+        document.body.appendChild(victoryText);
+        setTimeout(() => victoryText.remove(), 3000);
+    }, 800);
 }
 
 // ===========================

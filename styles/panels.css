@@ -718,3 +718,134 @@
         width: 100%;
     }
 }
+
+/* ===========================
+   Special Milestone Animations
+   =========================== */
+
+/* Floating Hearts Effect (500 kisses) */
+@keyframes floatUpHeart {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(0.8) rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-50vh) scale(1.2) rotate(180deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-100vh) scale(0.6) rotate(360deg);
+    }
+}
+
+/* Golden Crown Effect (1000 kisses) */
+@keyframes crownAppear {
+    0% {
+        opacity: 0;
+        transform: scale(0) rotate(-180deg);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.3) rotate(10deg);
+        filter: drop-shadow(0 0 30px gold) brightness(1.5);
+    }
+    70% {
+        transform: scale(0.9) rotate(-5deg);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.1) rotate(0deg);
+        filter: drop-shadow(0 0 50px gold) brightness(2);
+    }
+}
+
+@keyframes sparkleEffect {
+    0% {
+        opacity: 0;
+        transform: scale(0) rotate(0deg);
+    }
+    20% {
+        opacity: 1;
+        transform: scale(1.5) rotate(90deg);
+    }
+    40% {
+        opacity: 0.8;
+        transform: scale(1) rotate(180deg);
+    }
+    60% {
+        opacity: 1;
+        transform: scale(1.3) rotate(270deg);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0) rotate(360deg);
+    }
+}
+
+/* Boss Victory Effects */
+@keyframes screenFlash {
+    0% {
+        opacity: 0.9;
+        background: rgba(255, 255, 255, 0.9);
+    }
+    50% {
+        opacity: 0.5;
+        background: rgba(255, 223, 0, 0.7);
+    }
+    100% {
+        opacity: 0;
+        background: rgba(255, 255, 255, 0);
+    }
+}
+
+@keyframes confettiExplosion {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) rotate(0deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(var(--confetti-x), var(--confetti-y)) rotate(var(--confetti-rotation));
+    }
+}
+
+@keyframes starBurst {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(0) rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.5) rotate(180deg);
+        filter: drop-shadow(0 0 20px gold) brightness(1.8);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(2) rotate(360deg);
+        filter: drop-shadow(0 0 40px gold) brightness(2);
+    }
+}
+
+@keyframes victoryTextAppear {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0);
+    }
+    40% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.3);
+        text-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+    }
+    60% {
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+    80% {
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+        text-shadow: 0 0 50px rgba(255, 215, 0, 1);
+    }
+}
