@@ -182,7 +182,15 @@ function submitAnswer() {
     const correctAnswers = question.correct;
 
     // Check if answer is correct
-    const isCorrect = arraysEqual(selectedAnswers.sort(), correctAnswers.sort());
+    let isCorrect;
+    if (!question.multipleChoice && correctAnswers.length > 1) {
+        // Special case: single choice but multiple correct answers
+        // Any one of the correct answers is acceptable
+        isCorrect = correctAnswers.includes(selectedAnswers[0]);
+    } else {
+        // Standard case: exact match required
+        isCorrect = arraysEqual(selectedAnswers.sort(), correctAnswers.sort());
+    }
 
     if (isCorrect) {
         correctAnswersCount++;

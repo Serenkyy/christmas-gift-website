@@ -1,62 +1,62 @@
 [
   {
-    "question": "Oppa最喜欢的颜色是什么？",
-    "answers": ["红色", "蓝色", "绿色", "黄色"],
+    "question": "What is Oppa real name?",
+    "answers": ["Sergey", "Oppa", "孔子", "Baby"],
     "correct": [0],
     "multipleChoice": false
   },
   {
-    "question": "Oppa的生日是哪一天？",
-    "answers": ["1月15日", "3月20日", "6月10日", "9月5日"],
+    "question": "When Oppa was born?",
+    "answers": ["17.07.2000", "07.17.2000", "17.04.2003", "yesterday"],
+    "correct": [0, 1],
+    "multipleChoice": false
+  },
+  {
+    "question": "Pick Oppa favorite food from the list.",
+    "answers": ["Pizza", "Pasta", "宝宝", "KFC"],
+    "correct": [0, 1, 2, 3],
+    "multipleChoice": true
+  },
+  {
+    "question": "What Oppa has Master degree with honors at?",
+    "answers": ["Being cute and horny", "Radio engineering (Remote sensing)", "Cooking", "Physical education"],
     "correct": [1],
     "multipleChoice": false
   },
   {
-    "question": "Oppa最喜欢吃什么？（可多选）",
-    "answers": ["披萨", "寿司", "意大利面", "汉堡"],
-    "correct": [0, 1],
-    "multipleChoice": true
+    "question": "What type of Oppa does NOT exist?",
+    "answers": ["Cute Oppa", "Horny Oppa", "Angry Oppa", "Bald Oppa"],
+    "correct": [3],
+    "multipleChoice": false
   },
   {
-    "question": "Oppa最喜欢的电影类型是什么？",
-    "answers": ["动作片", "爱情片", "科幻片", "喜剧片"],
+    "question": "Which country Oppa would like to travel first?",
+    "answers": ["USA", "UAE", "China", "Mongolia"],
     "correct": [2],
     "multipleChoice": false
   },
   {
-    "question": "Oppa最喜欢的运动是什么？",
-    "answers": ["足球", "篮球", "游泳", "跑步"],
+    "question": "What would be the best Christmas present for Oppa?",
+    "answers": ["Sport car", "New graphic card", "My baby smile", "New Balance sneakers"],
+    "correct": [2],
+    "multipleChoice": false
+  },
+  {
+    "question": "At what speed can a mosquito typically travel?",
+    "answers": ["5 m/s", "10 m/s", "0.5 m/s", "3.364353453 m/s"],
+    "correct": [2],
+    "multipleChoice": false
+  },
+  {
+    "question": "关于中国历史上的"十六国"时期，下列哪个政权并非由鲜卑族建立？",
+    "answers": ["前燕（由慕容部鲜卑建立）", "后赵（由羯族建立）", "南燕（由慕容部鲜卑建立）", "西秦（由乞伏部鲜卑建立）"],
     "correct": [1],
     "multipleChoice": false
   },
   {
-    "question": "Oppa最喜欢的音乐类型是什么？（可多选）",
-    "answers": ["流行", "摇滚", "古典", "嘻哈"],
-    "correct": [0, 3],
+    "question": "Do you love Oppa?",
+    "answers": ["Yes", "Definitely", "Absolutely", "NO"],
+    "correct": [0, 1, 2],
     "multipleChoice": true
-  },
-  {
-    "question": "Oppa最害怕什么？",
-    "answers": ["蜘蛛", "黑暗", "高处", "蛇"],
-    "correct": [0],
-    "multipleChoice": false
-  },
-  {
-    "question": "Oppa最喜欢的季节是什么？",
-    "answers": ["春天", "夏天", "秋天", "冬天"],
-    "correct": [2],
-    "multipleChoice": false
-  },
-  {
-    "question": "Oppa最喜欢的饮料是什么？（可多选）",
-    "answers": ["咖啡", "茶", "果汁", "可乐"],
-    "correct": [0, 1],
-    "multipleChoice": true
-  },
-  {
-    "question": "Oppa最想去的地方是哪里？",
-    "answers": ["日本", "法国", "美国", "澳大利亚"],
-    "correct": [0],
-    "multipleChoice": false
   }
 ]
