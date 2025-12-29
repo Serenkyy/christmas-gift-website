@@ -227,6 +227,45 @@
     }
 }
 
+/* Advanced animations for milestones */
+.face-wrapper.spin-jump {
+    animation: spinJump 0.4s ease-out;
+}
+
+@keyframes spinJump {
+    0% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+    50% {
+        transform: translate(var(--jump-x), calc(var(--jump-y) - 25px)) rotate(180deg) scale(1.15);
+    }
+    100% {
+        transform: translate(0, 0) rotate(360deg) scale(1);
+    }
+}
+
+.face-wrapper.mega-bounce {
+    animation: megaBounce 0.5s ease-out;
+}
+
+@keyframes megaBounce {
+    0% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+    30% {
+        transform: translate(var(--jump-x), calc(var(--jump-y) - 40px)) rotate(-15deg) scale(1.25);
+    }
+    50% {
+        transform: translate(calc(var(--jump-x) * -0.5), calc(var(--jump-y) - 50px)) rotate(15deg) scale(1.3);
+    }
+    70% {
+        transform: translate(var(--jump-x), calc(var(--jump-y) - 30px)) rotate(-10deg) scale(1.2);
+    }
+    100% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+}
+
 /* Kiss Effects */
 .kiss-effects {
     position: fixed;

@@ -13,9 +13,8 @@ const UNLOCKABLE_FACES = [
     { kisses: 25, image: 'face-25.png', name: 'Crown' },
     { kisses: 50, image: 'face-50.png', name: 'Party Hat' },
     { kisses: 100, image: 'face-100.png', name: 'Wizard Hat' },
-    { kisses: 250, image: 'face-250.png', name: 'Pirate Hat' },
-    { kisses: 500, image: 'face-500.png', name: 'Chef Hat' },
-    { kisses: 1000, image: 'face-1000.png', name: 'King Crown' }
+    { kisses: 250, image: 'face-250.png', name: 'Pirate Hat' }
+    // 500 and 1000 kisses trigger special animations instead
 ];
 
 const BOSS_FACE = { image: 'face-boss.png', name: 'Hero Hat' };
@@ -120,11 +119,18 @@ function handleClick(e) {
 
     const faceWrapper = document.getElementById('face-wrapper');
 
-    // Jump animation
-    faceWrapper.classList.remove('jump');
-    // Trigger reflow to restart animation
-    void faceWrapper.offsetWidth;
-    faceWrapper.classList.add('jump');
+    // Determine animation based on milestone
+    let animationClass = 'jump';
+    if (gameState.totalKisses >= 1000) {
+        animationClass = 'mega-bounce'; // After 1000 kisses: dramatic bounce
+    } else if (gameState.totalKisses >= 500) {
+        animationClass = 'spin-jump'; // After 500 kisses: spinning jump
+    }
+
+    // Apply animation
+    faceWrapper.classList.remove('jump', 'spin-jump', 'mega-bounce');
+    void faceWrapper.offsetWidth; // Trigger reflow to restart animation
+    faceWrapper.classList.add(animationClass);
 
     // Random offset for variety
     const randomX = (Math.random() - 0.5) * 20; // -10px to +10px
