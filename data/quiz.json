@@ -15,7 +15,7 @@
     "question": "Pick Oppa favorite food from the list.",
     "answers": ["Pizza", "Pasta", "宝宝", "KFC"],
     "correct": [0, 1, 2, 3],
-    "multipleChoice": false
+    "multipleChoice": true
   },
   {
     "question": "What Oppa has Master degree with honors at?",
