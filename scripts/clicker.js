@@ -22,7 +22,8 @@ const BOSS_FACE = { image: 'face-boss.png', name: 'Hero Hat' };
 const UPGRADES = [
     { power: 2, cost: 50 },
     { power: 3, cost: 150 },
-    { power: 5, cost: 400 }
+    { power: 5, cost: 250 },
+    { power: 10, cost: 400 }
 ];
 
 let gameState = {
@@ -209,7 +210,7 @@ function checkMilestones() {
     });
 
     // Check for boss battle
-    if (gameState.totalKisses >= 1500 && !gameState.bossDefeated && !gameState.bossActive) {
+    if (gameState.totalKisses >= 1200 && !gameState.bossDefeated && !gameState.bossActive) {
         startBossBattle();
     }
 }
@@ -421,7 +422,7 @@ function defeatBoss() {
     mosquitoContainer.innerHTML = '';
 
     // Unlock boss face
-    const bossFaceUnlock = { ...BOSS_FACE, kisses: 1500 };
+    const bossFaceUnlock = { ...BOSS_FACE, kisses: 1200 };
     gameState.unlockedFaces.push(bossFaceUnlock);
     changeFacePermanent(BOSS_FACE.image);
 
