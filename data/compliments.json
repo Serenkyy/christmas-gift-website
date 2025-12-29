@@ -1,40 +1,212 @@
-[
-  "amazing",
-  "wonderful",
-  "extraordinary",
-  "precious",
-  "adorable",
-  "beautiful",
-  "brilliant",
-  "charming",
-  "delightful",
-  "fantastic",
-  "gorgeous",
-  "incredible",
-  "lovely",
-  "magnificent",
-  "perfect",
-  "radiant",
-  "stunning",
-  "sweet",
-  "treasured",
-  "unique",
-  "angelic",
-  "breathtaking",
-  "captivating",
-  "dazzling",
-  "elegant",
-  "enchanting",
-  "graceful",
-  "irresistible",
-  "mesmerizing",
-  "phenomenal",
-  "remarkable",
-  "spectacular",
-  "unforgettable",
-  "amazing 了不起",
-  "beautiful 美丽",
-  "cute 可爱",
-  "special 特别",
-  "magical 神奇"
-]
+{
+  "compliments": [
+    {
+      "english": "beautiful",
+      "chinese": "美丽的"
+    },
+    {
+      "english": "amazing",
+      "chinese": "惊人的"
+    },
+    {
+      "english": "intelligent",
+      "chinese": "聪明的"
+    },
+    {
+      "english": "kind",
+      "chinese": "善良的"
+    },
+    {
+      "english": "charming",
+      "chinese": "迷人的"
+    },
+    {
+      "english": "adorable",
+      "chinese": "可爱的"
+    },
+    {
+      "english": "stunning",
+      "chinese": "惊艳的"
+    },
+    {
+      "english": "wonderful",
+      "chinese": "美妙的"
+    },
+    {
+      "english": "lovely",
+      "chinese": "动人的"
+    },
+    {
+      "english": "brilliant",
+      "chinese": "才华横溢的"
+    },
+    {
+      "english": "supportive",
+      "chinese": "贴心的"
+    },
+    {
+      "english": "my inspiration",
+      "chinese": "我的灵感"
+    },
+    {
+      "english": "one of a kind",
+      "chinese": "独一无二的"
+    },
+    {
+      "english": "elegant",
+      "chinese": "优雅的"
+    },
+    {
+      "english": "strong",
+      "chinese": "坚强的"
+    },
+    {
+      "english": "warm-hearted",
+      "chinese": "温暖的"
+    },
+    {
+      "english": "funny",
+      "chinese": "有趣的"
+    },
+    {
+      "english": "resilient",
+      "chinese": "坚韧的"
+    },
+    {
+      "english": "authentic",
+      "chinese": "真诚的"
+    },
+    {
+      "english": "captivating",
+      "chinese": "令人着迷的"
+    },
+    {
+      "english": "thoughtful",
+      "chinese": "体贴的"
+    },
+    {
+      "english": "graceful",
+      "chinese": "优雅的"
+    },
+    {
+      "english": "my sunshine",
+      "chinese": "我的阳光"
+    },
+    {
+      "english": "understanding",
+      "chinese": "善解人意的"
+    },
+    {
+      "english": "perfect to me",
+      "chinese": "我心中完美的"
+    },
+    {
+      "english": "amazing",
+      "chinese": "了不起"
+    },
+    {
+      "english": "beautiful",
+      "chinese": "美丽"
+    },
+    {
+      "english": "extraordinary",
+      "chinese": "非凡的"
+    },
+    {
+      "english": "precious",
+      "chinese": "珍贵的"
+    },
+    {
+      "english": "delightful",
+      "chinese": "令人愉悦的"
+    },
+    {
+      "english": "fantastic",
+      "chinese": "极好的"
+    },
+    {
+      "english": "gorgeous",
+      "chinese": "靓丽的"
+    },
+    {
+      "english": "incredible",
+      "chinese": "难以置信的"
+    },
+    {
+      "english": "magnificent",
+      "chinese": "雍容华贵的"
+    },
+    {
+      "english": "perfect",
+      "chinese": "完美的"
+    },
+    {
+      "english": "radiant",
+      "chinese": "容光焕发的"
+    },
+    {
+      "english": "sweet",
+      "chinese": "甜蜜的"
+    },
+    {
+      "english": "treasured",
+      "chinese": "珍爱的"
+    },
+    {
+      "english": "unique",
+      "chinese": "独特的"
+    },
+    {
+      "english": "angelic",
+      "chinese": "天使般的"
+    },
+    {
+      "english": "breathtaking",
+      "chinese": "令人窒息的"
+    },
+    {
+      "english": "dazzling",
+      "chinese": "光彩夺目的"
+    },
+    {
+      "english": "enchanting",
+      "chinese": "迷人的"
+    },
+    {
+      "english": "irresistible",
+      "chinese": "无法抗拒的"
+    },
+    {
+      "english": "mesmerizing",
+      "chinese": "令人着迷的"
+    },
+    {
+      "english": "phenomenal",
+      "chinese": "非凡的"
+    },
+    {
+      "english": "remarkable",
+      "chinese": "卓越的"
+    },
+    {
+      "english": "spectacular",
+      "chinese": "引人注目的"
+    },
+    {
+      "english": "unforgettable",
+      "chinese": "难忘的"
+    },
+    {
+      "english": "cute",
+      "chinese": "可爱"
+    },
+    {
+      "english": "special",
+      "chinese": "特别"
+    },
+    {
+      "english": "magical",
+      "chinese": "神奇"
+    }
+  ]
+}

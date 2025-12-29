@@ -62,7 +62,8 @@ function updateActiveTracker(index) {
 async function loadCompliments() {
     try {
         const response = await fetch('data/compliments.json');
-        compliments = await response.json();
+        const data = await response.json();
+        compliments = data.compliments || [];
         if (compliments.length > 0) {
             updateCompliment();
         }
@@ -70,10 +71,11 @@ async function loadCompliments() {
         console.error('Error loading compliments:', error);
         // Fallback compliments if file doesn't load
         compliments = [
-            'amazing', 'wonderful', 'extraordinary', 'precious', 'adorable',
-            'beautiful', 'brilliant', 'charming', 'delightful', 'fantastic',
-            'gorgeous', 'incredible', 'lovely', 'magnificent', 'perfect',
-            'radiant', 'stunning', 'sweet', 'treasure', 'unique'
+            { english: 'amazing', chinese: '了不起' },
+            { english: 'wonderful', chinese: '美妙的' },
+            { english: 'extraordinary', chinese: '非凡的' },
+            { english: 'precious', chinese: '珍贵的' },
+            { english: 'adorable', chinese: '可爱的' }
         ];
         updateCompliment();
     }
@@ -102,12 +104,17 @@ function updateCompliment() {
 
     currentComplimentIndex = newIndex;
 
+    // Randomly choose English or Chinese
+    const compliment = compliments[currentComplimentIndex];
+    const useEnglish = Math.random() < 0.5;
+    const displayText = useEnglish ? compliment.english : compliment.chinese;
+
     // Animate text change
     adjectiveElement.style.opacity = '0';
     adjectiveElement.style.transform = 'translateY(20px)';
 
     setTimeout(() => {
-        adjectiveElement.textContent = compliments[currentComplimentIndex];
+        adjectiveElement.textContent = displayText;
         adjectiveElement.style.opacity = '1';
         adjectiveElement.style.transform = 'translateY(0)';
     }, 200);
