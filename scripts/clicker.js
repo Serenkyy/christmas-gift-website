@@ -22,8 +22,7 @@ const BOSS_FACE = { image: 'face-boss.png', name: 'Hero Hat' };
 const UPGRADES = [
     { power: 2, cost: 50 },
     { power: 3, cost: 150 },
-    { power: 5, cost: 400 },
-    { power: 10, cost: 1000 }
+    { power: 5, cost: 400 }
 ];
 
 let gameState = {
@@ -292,8 +291,8 @@ function purchaseUpgrade(power, cost, button) {
         updateDisplay();
         saveGameState();
     } else {
-        // Not enough kisses - shake button
-        button.style.animation = 'shake 0.5s';
+        // Not enough kisses - move button upward
+        button.style.animation = 'cannotAfford 0.5s';
         setTimeout(() => {
             button.style.animation = '';
         }, 500);

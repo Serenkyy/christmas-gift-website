@@ -404,6 +404,13 @@
     75% { transform: translateX(-50%) rotate(2deg); }
 }
 
+@keyframes cannotAfford {
+    0%, 100% { transform: translateY(0); }
+    25% { transform: translateY(-8px); }
+    50% { transform: translateY(-4px); }
+    75% { transform: translateY(-6px); }
+}
+
 .boss-health-container {
     position: absolute;
     top: 20%;
