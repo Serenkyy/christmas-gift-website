@@ -7,22 +7,24 @@ A Christmas-themed interactive website created with love.
 Please create and add the following images to complete the website:
 
 ### Face Images (`images/faces/`)
-- `face-default.png` - Your main neutral face (1000x1000px, transparent PNG)
-- `face-69.png` - Special expression for 69 kisses
-- `face-228.png` - Special expression for 228 kisses
-- `face-666.png` - Special expression for 666 kisses
-- `face-1111.png` - Special expression for 1111 kisses
-- `face-boss.png` - Expression during boss battle (optional)
+**Format:** PNG with transparent background, 1000x1000px
 
-### Hats/Items (`images/hats/`)
-- `hat-10.png` - Unlocked at 10 kisses (600x400px, transparent PNG)
-- `hat-25.png` - Unlocked at 25 kisses
-- `hat-50.png` - Unlocked at 50 kisses
-- `hat-100.png` - Unlocked at 100 kisses
-- `hat-250.png` - Unlocked at 250 kisses
-- `hat-500.png` - Unlocked at 500 kisses
-- `hat-1000.png` - Unlocked at 1000 kisses
-- `hat-boss.png` - Special hat for beating boss
+**Required Files:**
+- `face-default.png` - Your main neutral face
+- `face-69.png` - Special face for 69 kisses milestone
+- `face-228.png` - Special face for 228 kisses milestone
+- `face-666.png` - Special face for 666 kisses milestone
+- `face-1111.png` - Special face for 1111 kisses milestone
+
+**Milestone Face Unlocks (with hats/costumes):**
+- `face-10.png` - Unlocked at 10 kisses (e.g., with Santa hat)
+- `face-25.png` - Unlocked at 25 kisses (e.g., with crown)
+- `face-50.png` - Unlocked at 50 kisses (e.g., with party hat)
+- `face-100.png` - Unlocked at 100 kisses (e.g., with wizard hat)
+- `face-250.png` - Unlocked at 250 kisses (e.g., with pirate hat)
+- `face-500.png` - Unlocked at 500 kisses (e.g., with chef hat)
+- `face-1000.png` - Unlocked at 1000 kisses (e.g., with king crown)
+- `face-boss.png` - Unlocked after beating boss (e.g., with hero hat)
 
 ### Effects (`images/effects/`)
 - `mosquito.png` - Mosquito sprite for boss battle (200x200px, transparent PNG)

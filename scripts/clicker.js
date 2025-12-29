@@ -8,17 +8,17 @@ const MILESTONE_FACES = {
     1111: 'face-1111.png'
 };
 
-const MILESTONE_HATS = [
-    { kisses: 10, image: 'hat-10.png', name: 'Santa Hat' },
-    { kisses: 25, image: 'hat-25.png', name: 'Crown' },
-    { kisses: 50, image: 'hat-50.png', name: 'Party Hat' },
-    { kisses: 100, image: 'hat-100.png', name: 'Wizard Hat' },
-    { kisses: 250, image: 'hat-250.png', name: 'Pirate Hat' },
-    { kisses: 500, image: 'hat-500.png', name: 'Chef Hat' },
-    { kisses: 1000, image: 'hat-1000.png', name: 'King Crown' }
+const MILESTONE_FACES = [
+    { kisses: 10, image: 'face-10.png', name: 'Santa Hat' },
+    { kisses: 25, image: 'face-25.png', name: 'Crown' },
+    { kisses: 50, image: 'face-50.png', name: 'Party Hat' },
+    { kisses: 100, image: 'face-100.png', name: 'Wizard Hat' },
+    { kisses: 250, image: 'face-250.png', name: 'Pirate Hat' },
+    { kisses: 500, image: 'face-500.png', name: 'Chef Hat' },
+    { kisses: 1000, image: 'face-1000.png', name: 'King Crown' }
 ];
 
-const BOSS_HAT = { image: 'hat-boss.png', name: 'Hero Hat' };
+const BOSS_FACE = { image: 'face-boss.png', name: 'Hero Hat' };
 
 const UPGRADES = [
     { power: 2, cost: 50 },
@@ -31,8 +31,8 @@ let gameState = {
     totalKisses: 0,
     clickPower: 1,
     purchasedUpgrades: [],
-    unlockedHats: [],
-    currentHat: null,
+    unlockedFaces: [],
+    currentFace: 'face-default.png',
     bossDefeated: false,
     bossActive: false
 };
@@ -57,14 +57,11 @@ function loadGameState() {
     const saved = localStorage.getItem('kissClickerGame');
     if (saved) {
         gameState = { ...gameState, ...JSON.parse(saved) };
-        // Restore unlocked hats
-        gameState.unlockedHats.forEach(hat => {
-            if (hat.image === BOSS_HAT.image) {
-                applyHat(BOSS_HAT.image);
-            } else {
-                applyHat(hat.image);
-            }
-        });
+        // Restore current face
+        if (gameState.currentFace) {
+            const faceElement = document.getElementById('face-image');
+            faceElement.src = `images/faces/${gameState.currentFace}`;
+        }
     }
 }
 
@@ -74,8 +71,8 @@ function resetGame() {
             totalKisses: 0,
             clickPower: 1,
             purchasedUpgrades: [],
-            unlockedHats: [],
-            currentHat: null,
+            unlockedFaces: [],
+            currentFace: 'face-default.png',
             bossDefeated: false,
             bossActive: false
         };
@@ -190,10 +187,10 @@ function checkMilestones() {
         changeFace(MILESTONE_FACES[gameState.totalKisses]);
     }
 
-    // Check for hat unlocks
-    MILESTONE_HATS.forEach(hat => {
-        if (gameState.totalKisses >= hat.kisses && !gameState.unlockedHats.some(h => h.kisses === hat.kisses)) {
-            unlockHat(hat);
+    // Check for milestone face unlocks
+    MILESTONE_FACES.forEach(face => {
+        if (gameState.totalKisses >= face.kisses && !gameState.unlockedFaces.some(f => f.kisses === face.kisses)) {
+            unlockFace(face);
         }
     });
 
@@ -228,64 +225,28 @@ function changeFace(faceImage) {
 // ===========================
 // Hat System
 // ===========================
-function unlockHat(hat) {
-    gameState.unlockedHats.push(hat);
-    applyHat(hat.image);
-    showUnlockedNotification(hat.name);
+function unlockFace(face) {
+    gameState.unlockedFaces.push(face);
+    changeFacePermanent(face.image);
     updateUnlockedGrid();
     saveGameState();
 }
 
-function applyHat(hatImage) {
-    const hatContainer = document.getElementById('hat-container');
-    hatContainer.innerHTML = '';
-
-    const hatImg = document.createElement('img');
-    hatImg.src = `images/hats/${hatImage}`;
-    hatImg.alt = 'Hat';
-    hatImg.style.width = '100%';
-    hatImg.style.height = '100%';
-    hatImg.style.objectFit = 'contain';
-
-    hatContainer.appendChild(hatImg);
-    gameState.currentHat = hatImage;
-}
-
-function showUnlockedNotification(itemName) {
-    const notification = document.createElement('div');
-    notification.style.position = 'fixed';
-    notification.style.top = '50%';
-    notification.style.left = '50%';
-    notification.style.transform = 'translate(-50%, -50%)';
-    notification.style.background = 'var(--christmas-gold)';
-    notification.style.padding = '2rem 3rem';
-    notification.style.borderRadius = 'var(--border-radius)';
-    notification.style.fontSize = '2rem';
-    notification.style.fontWeight = 'bold';
-    notification.style.zIndex = '10000';
-    notification.style.boxShadow = '0 10px 40px rgba(0, 0, 0, 0.3)';
-    notification.style.animation = 'fadeInUp 0.5s ease';
-    notification.textContent = `Unlocked: ${itemName}! 🎉`;
-
-    document.body.appendChild(notification);
-
-    setTimeout(() => {
-        notification.style.opacity = '0';
-        notification.style.transform = 'translate(-50%, -50%) scale(0.8)';
-        notification.style.transition = 'all 0.3s ease';
-        setTimeout(() => notification.remove(), 300);
-    }, 2000);
+function changeFacePermanent(faceImage) {
+    const faceElement = document.getElementById('face-image');
+    faceElement.src = `images/faces/${faceImage}`;
+    gameState.currentFace = faceImage;
 }
 
 function updateUnlockedGrid() {
     const grid = document.getElementById('unlocked-grid');
     grid.innerHTML = '';
 
-    gameState.unlockedHats.forEach(hat => {
+    gameState.unlockedFaces.forEach(face => {
         const item = document.createElement('div');
         item.classList.add('unlocked-item');
-        item.textContent = hat.kisses;
-        item.title = hat.name;
+        item.textContent = face.kisses;
+        item.title = face.name;
         grid.appendChild(item);
     });
 }
@@ -436,19 +397,15 @@ function defeatBoss() {
 
     // Hide boss battle
     bossContainer.classList.add('hidden');
-    faceImage.src = 'images/faces/face-default.png';
 
     // Clear mosquitos
     const mosquitoContainer = document.getElementById('mosquito-container');
     mosquitoContainer.innerHTML = '';
 
-    // Unlock boss hat
-    const bossHatUnlock = { ...BOSS_HAT, kisses: 1500 };
-    gameState.unlockedHats.push(bossHatUnlock);
-    applyHat(BOSS_HAT.image);
-
-    // Show victory message
-    showUnlockedNotification(BOSS_HAT.name + ' - You saved Oppa!');
+    // Unlock boss face
+    const bossFaceUnlock = { ...BOSS_FACE, kisses: 1500 };
+    gameState.unlockedFaces.push(bossFaceUnlock);
+    changeFacePermanent(BOSS_FACE.image);
 
     updateUnlockedGrid();
     saveGameState();
