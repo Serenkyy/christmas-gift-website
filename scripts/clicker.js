@@ -1,14 +1,14 @@
 // ===========================
 // Kiss Clicker Game State
 // ===========================
-const MILESTONE_FACES = {
+const SPECIAL_FACES = {
     69: 'face-69.png',
     228: 'face-228.png',
     666: 'face-666.png',
     1111: 'face-1111.png'
 };
 
-const MILESTONE_FACES = [
+const UNLOCKABLE_FACES = [
     { kisses: 10, image: 'face-10.png', name: 'Santa Hat' },
     { kisses: 25, image: 'face-25.png', name: 'Crown' },
     { kisses: 50, image: 'face-50.png', name: 'Party Hat' },
@@ -120,8 +120,17 @@ function handleClick(e) {
 
     const faceWrapper = document.getElementById('face-wrapper');
 
-    // Flip face
-    faceWrapper.classList.toggle('flip');
+    // Jump animation
+    faceWrapper.classList.remove('jump');
+    // Trigger reflow to restart animation
+    void faceWrapper.offsetWidth;
+    faceWrapper.classList.add('jump');
+
+    // Random offset for variety
+    const randomX = (Math.random() - 0.5) * 20; // -10px to +10px
+    const randomY = (Math.random() - 0.5) * 20; // -10px to +10px
+    faceWrapper.style.setProperty('--jump-x', `${randomX}px`);
+    faceWrapper.style.setProperty('--jump-y', `${randomY}px`);
 
     // Golden kiss chance (10%)
     const isGolden = Math.random() < 0.1;
@@ -183,12 +192,12 @@ function createKissParticle(x, y, isGolden, value) {
 // ===========================
 function checkMilestones() {
     // Check for special faces
-    if (MILESTONE_FACES[gameState.totalKisses]) {
-        changeFace(MILESTONE_FACES[gameState.totalKisses]);
+    if (SPECIAL_FACES[gameState.totalKisses]) {
+        changeFace(SPECIAL_FACES[gameState.totalKisses]);
     }
 
     // Check for milestone face unlocks
-    MILESTONE_FACES.forEach(face => {
+    UNLOCKABLE_FACES.forEach(face => {
         if (gameState.totalKisses >= face.kisses && !gameState.unlockedFaces.some(f => f.kisses === face.kisses)) {
             unlockFace(face);
         }

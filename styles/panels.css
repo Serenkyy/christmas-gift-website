@@ -198,7 +198,8 @@
     position: relative;
     width: 100%;
     padding-bottom: 100%; /* 1:1 Aspect Ratio */
-    transition: transform 0.3s ease;
+    --jump-x: 0px;
+    --jump-y: 0px;
 }
 
 .face-image {
@@ -208,11 +209,22 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
-    transition: transform 0.1s ease;
 }
 
-.face-wrapper.flip {
-    transform: scaleX(-1);
+.face-wrapper.jump {
+    animation: jumpAround 0.3s ease-out;
+}
+
+@keyframes jumpAround {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    50% {
+        transform: translate(var(--jump-x), calc(var(--jump-y) - 15px)) scale(1.05);
+    }
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
 }
 
 /* Kiss Effects */
