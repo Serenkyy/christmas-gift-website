@@ -9,15 +9,20 @@ const SPECIAL_FACES = {
 };
 
 const UNLOCKABLE_FACES = [
-    { kisses: 10, image: 'face-10.png', name: 'Santa Hat' },
-    { kisses: 25, image: 'face-25.png', name: 'Crown' },
-    { kisses: 50, image: 'face-50.png', name: 'Party Hat' },
-    { kisses: 100, image: 'face-100.png', name: 'Wizard Hat' },
-    { kisses: 250, image: 'face-250.png', name: 'Pirate Hat' }
+    { kisses: 10, image: 'face-10.png', emoji: '🎉' },
+    { kisses: 25, image: 'face-25.png', emoji: '🤠' },
+    { kisses: 50, image: 'face-50.png', emoji: '🧐' },
+    { kisses: 100, image: 'face-100.png', emoji: '🫧' },
+    { kisses: 250, image: 'face-250.png', emoji: '🦄' }
     // 500 and 1000 kisses trigger special animations instead
 ];
 
-const BOSS_FACE = { image: 'face-boss.png', name: 'Hero Hat' };
+const SPECIAL_MILESTONE_EMOJIS = {
+    500: '🌪️',
+    1000: '👑'
+};
+
+const BOSS_FACE = { image: 'face-boss.png', emoji: '🦸' };
 
 const UPGRADES = [
     { power: 2, cost: 50 },
@@ -209,6 +214,13 @@ function checkMilestones() {
         }
     });
 
+    // Check for special animation milestones (500 and 1000)
+    [500, 1000].forEach(milestone => {
+        if (gameState.totalKisses >= milestone && !gameState.unlockedFaces.some(f => f.kisses === milestone)) {
+            unlockSpecialMilestone(milestone);
+        }
+    });
+
     // Check for boss battle
     if (gameState.totalKisses >= 1200 && !gameState.bossDefeated && !gameState.bossActive) {
         startBossBattle();
@@ -227,11 +239,11 @@ function changeFace(faceImage) {
         faceElement.style.opacity = '1';
     }, 200);
 
-    // Revert after 3 seconds
+    // Revert after 3 seconds to the permanent face
     setTimeout(() => {
         faceElement.style.opacity = '0';
         setTimeout(() => {
-            faceElement.src = 'images/faces/face-default.png';
+            faceElement.src = `images/faces/${gameState.currentFace}`;
             faceElement.style.opacity = '1';
         }, 200);
     }, 3000);
@@ -245,11 +257,19 @@ function unlockFace(face) {
     changeFacePermanent(face.image);
     updateUnlockedGrid();
     saveGameState();
+}
 
-    // Trigger special animations for milestones
-    if (face.kisses === 500) {
+function unlockSpecialMilestone(kisses) {
+    // Add special milestone to unlocked faces for display purposes
+    const milestone = { kisses: kisses, emoji: SPECIAL_MILESTONE_EMOJIS[kisses] };
+    gameState.unlockedFaces.push(milestone);
+    updateUnlockedGrid();
+    saveGameState();
+
+    // Trigger special animations
+    if (kisses === 500) {
         floatingHeartsEffect();
-    } else if (face.kisses === 1000) {
+    } else if (kisses === 1000) {
         goldenCrownEffect();
     }
 }
@@ -267,7 +287,7 @@ function updateUnlockedGrid() {
     gameState.unlockedFaces.forEach(face => {
         const item = document.createElement('div');
         item.classList.add('unlocked-item');
-        item.textContent = face.kisses;
+        item.textContent = face.emoji || face.kisses; // Use emoji if available, otherwise kisses number
         grid.appendChild(item);
     });
 }
@@ -281,7 +301,7 @@ function purchaseUpgrade(power, cost, button) {
     }
 
     if (gameState.totalKisses >= cost) {
-        gameState.totalKisses -= cost;
+        // Don't deduct kisses - just unlock the upgrade
         gameState.clickPower = power;
         gameState.purchasedUpgrades.push(power);
 
