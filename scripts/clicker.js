@@ -38,7 +38,8 @@ let gameState = {
     unlockedFaces: [],
     currentFace: 'face-default.png',
     bossDefeated: false,
-    bossActive: false
+    bossActive: false,
+    newYearShown: false
 };
 
 // ===========================
@@ -48,6 +49,12 @@ document.addEventListener('DOMContentLoaded', () => {
     loadGameState();
     initClickerGame();
     updateDisplay();
+
+    // Show New Year banner if already unlocked
+    if (gameState.newYearShown) {
+        const banner = document.getElementById('new-year-banner');
+        banner.classList.remove('hidden');
+    }
 });
 
 // ===========================
@@ -78,7 +85,8 @@ function resetGame() {
             unlockedFaces: [],
             currentFace: 'face-default.png',
             bossDefeated: false,
-            bossActive: false
+            bossActive: false,
+            newYearShown: false
         };
         saveGameState();
         location.reload();
@@ -449,7 +457,22 @@ function defeatBoss() {
     // Trigger victory effects
     bossVictoryEffects();
 
+    // Show Happy New Year banner after victory effects complete
+    setTimeout(() => {
+        showNewYearBanner();
+    }, 4000);
+
     updateUnlockedGrid();
+    saveGameState();
+}
+
+function showNewYearBanner() {
+    if (gameState.newYearShown) return;
+
+    const banner = document.getElementById('new-year-banner');
+    banner.classList.remove('hidden');
+
+    gameState.newYearShown = true;
     saveGameState();
 }
 

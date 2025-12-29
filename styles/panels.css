@@ -142,6 +142,49 @@
     font-weight: 700;
 }
 
+.new-year-banner {
+    background: linear-gradient(135deg, var(--christmas-gold), var(--christmas-red), var(--christmas-gold));
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 20px rgba(244, 209, 155, 0.5);
+    animation: newYearSlideIn 1s ease-out forwards;
+}
+
+.new-year-text {
+    font-size: clamp(1.2rem, 4vw, 2rem);
+    font-weight: 700;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    display: block;
+    animation: newYearPulse 2s ease-in-out infinite;
+}
+
+@keyframes newYearSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.8);
+    }
+    60% {
+        transform: translateY(10px) scale(1.05);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes newYearPulse {
+    0%, 100% {
+        transform: scale(1);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    50% {
+        transform: scale(1.05);
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 255, 255, 0.5);
+    }
+}
+
 .reset-btn {
     position: absolute;
     top: 0;
