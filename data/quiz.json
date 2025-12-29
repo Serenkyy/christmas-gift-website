@@ -42,10 +42,10 @@
     "multipleChoice": false
   },
   {
-    "question": "At what speed can a mosquito typically travel?",
-    "answers": ["5 m/s", "10 m/s", "0.5 m/s", "3.364353453 m/s"],
-    "correct": [2],
-    "multipleChoice": false
+    "question": "Select the kids of Oppa.",
+    "answers": ["Bella", "Kiki", "Sakura", "Mathew"],
+    "correct": [0, 1, 2],
+    "multipleChoice": true
   },
   {
     "question": "关于中国历史上的\"十六国\"时期，下列哪个政权并非由鲜卑族建立？",
